@@ -16,7 +16,9 @@ import { UserModule } from './user/user.module';
     database: 'mayiwen',
     autoLoadEntities: true,
     /** 生产环境应该禁用这个 */
-    synchronize: true
+    synchronize: true,
+    /** 是否打印日志 */
+    logging: true
 
   })],
   controllers: [AppController],

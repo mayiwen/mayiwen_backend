@@ -2,8 +2,6 @@ import { PartialType } from "@nestjs/mapped-types";
 import { IsNumber, IsString } from "class-validator";
 
 export class UserDto {
-  id?: number;
-  @IsString()
   name?: string;
   @IsString()
   password?: string

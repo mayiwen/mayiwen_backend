@@ -30,7 +30,19 @@ export class UserService {
   async add(add: AddUserDto): Promise<any> {
     return await this.repository.save(add);
   }
+  /**
+   * 
+   * @param id 
+   * @returns 
+   * DELETE FROM login_user WHERE id = 9;
+   */
   async delete(id: number):Promise<any> {
     return await this.repository.delete(id);
+  }
+  /**
+   * sql UPDATE "login_user" SET "login_name" = $1, "login_password" = $2, "login_password2" = $3, "login_count" = $4 WHERE "id" IN ($5) -- PARAMETERS: ["mayiwen12","12345612","1234567812",0,"12"]
+   */
+   async update(id: number, updateUser: UserDto) {
+    return this.repository.update(id, updateUser)
   }
 }
