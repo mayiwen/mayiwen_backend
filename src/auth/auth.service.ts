@@ -2,10 +2,12 @@ import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { UserService } from '../user/user.service';
 import { Repository } from 'typeorm';
+import { JwtService } from '@nestjs/jwt';
 @Injectable()
 export class AuthService {
   constructor(
-     private readonly userService: UserService
+     private readonly userService: UserService,
+     private readonly jwtService: JwtService
   ) {
   }
   /**
@@ -22,6 +24,15 @@ export class AuthService {
       return user;
     }
     return null;
+  }
+
+  async login(user: any) {
+    console.log('这是打印的user')
+    console.log(user)
+    const payload = { username: user.login_name, sub: user.id };
+    return {
+      access_token: this.jwtService.sign(payload),
+    };
   }
 
 }
