@@ -4,9 +4,10 @@ import { AppService } from './app.service';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { HelloModule } from './module/nav/module/hello/hello.module';
 import { UserModule } from './user/user.module';
+import { AuthModule } from './auth/auth.module';
 
 @Module({
-  imports: [HelloModule, UserModule,
+  imports: [HelloModule, UserModule,AuthModule,
     TypeOrmModule.forRoot({
     type: 'postgres',
     host: 'localhost',
