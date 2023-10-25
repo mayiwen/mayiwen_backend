@@ -3,6 +3,7 @@ import { AppService } from './app.service';
 import { AuthGuard } from '@nestjs/passport';
 import { LocalAuthGuard } from './auth/local-auth.guard';
 import { AuthService } from './auth/auth.service';
+import { Public } from './auth/directive/public.directive';
 
 @Controller()
 export class AppController {
@@ -25,5 +26,15 @@ export class AppController {
   @Get('profile')
   getProfile(@Request() req) {
     return req.user;
+  }
+  @Public()
+  @Get('sss')
+  getProfile1(@Request() req) {
+    return '你好';
+  }
+  @Public()
+  @Get('ddd')
+  getProfile2(@Request() req) {
+    return 'lest';
   }
 }
