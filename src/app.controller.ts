@@ -20,4 +20,10 @@ export class AppController {
     console.log(req.user)
     return this.authService.login(req.user);
   }
+  
+  @UseGuards(AuthGuard('jwt'))
+  @Get('profile')
+  getProfile(@Request() req) {
+    return req.user;
+  }
 }
