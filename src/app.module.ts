@@ -5,9 +5,10 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { HelloModule } from './module/nav/module/hello/hello.module';
 import { UserModule } from './user/user.module';
 import { AuthModule } from './auth/auth.module';
+import { NavModule } from './module/nav/nav.module';
 
 @Module({
-  imports: [HelloModule, UserModule,AuthModule,
+  imports: [HelloModule, UserModule,AuthModule,NavModule,
     TypeOrmModule.forRoot({
     type: 'postgres',
     host: 'localhost',
