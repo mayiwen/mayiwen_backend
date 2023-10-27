@@ -10,6 +10,6 @@ export class UserEntity extends BaseEntity {
   password: string;
   @Column({type: 'varchar', name: 'login_password2'})
   password2: string;
-  @Column({type: 'integer', name: 'login_count'})
+  @Column({type: 'int', name: 'login_count'})
   loginCount: number;
 }

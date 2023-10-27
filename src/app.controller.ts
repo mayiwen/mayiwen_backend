@@ -1,6 +1,5 @@
-import { Controller, Get, Post, UseGuards, Request } from '@nestjs/common';
+import { Controller, Get, Post, UseGuards, Request, All } from '@nestjs/common';
 import { AppService } from './app.service';
-import { AuthGuard } from '@nestjs/passport';
 import { LocalAuthGuard } from './auth/local-auth.guard';
 import { AuthService } from './auth/auth.service';
 import { Public } from './auth/directive/public.directive';
@@ -8,8 +7,8 @@ import { Public } from './auth/directive/public.directive';
 @Controller()
 export class AppController {
   constructor(private readonly appService: AppService, private readonly authService: AuthService) {}
-
-  @Get()
+  @Public()
+  @All()
   getHello(): string {
     return this.appService.getHello();
   }

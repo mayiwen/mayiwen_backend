@@ -9,12 +9,6 @@ export class UserService {
     @InjectRepository (UserEntity) private readonly repository: Repository<UserEntity>,
   ) {
   }
-  getHello(): string {
-    return 'this is hello router get';
-  }
-  postHello(): string {
-    return 'this is hello router post';
-  }
   /**
    * sql: select * from login_user
    */
