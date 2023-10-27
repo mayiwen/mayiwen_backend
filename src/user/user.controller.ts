@@ -1,11 +1,12 @@
 import { Body, Controller, Delete, Get, Param, Patch, Post } from '@nestjs/common';
 import { UserService } from './user.service';
 import { UserDto } from './dto/user-dto.dto';
+import { Public } from 'src/auth/directive/public.directive';
 
 @Controller('user')
 export class UserController {
   constructor(private readonly service: UserService) {}
-
+  @Public()
   @Get()
   async list() {
     let res = await this.service.list()
