@@ -13,28 +13,16 @@ export class AppController {
   getHello(): string {
     return this.appService.getHello();
   }
-  // @UseGuards(AuthGuard('local'))
+  // @UseGuards(AuthGuard('local')) Bearer
+  @Public()
   @UseGuards(LocalAuthGuard)
   @Post('auth/login')
   async login(@Request() req) {
-    console.log('这是打印的req')
-    console.log(req.user)
     return this.authService.login(req.user);
   }
   
-  @UseGuards(AuthGuard('jwt'))
   @Get('profile')
   getProfile(@Request() req) {
     return req.user;
-  }
-  @Public()
-  @Get('sss')
-  getProfile1(@Request() req) {
-    return '你好';
-  }
-  @Public()
-  @Get('ddd')
-  getProfile2(@Request() req) {
-    return 'lest';
   }
 }
