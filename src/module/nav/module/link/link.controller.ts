@@ -12,6 +12,7 @@ export class NavLinkController {
   list() {
     return this.service.list()
   }
+  @Public()
   @Get(':id')
   findByTitle(@Param('id') titleid) {
     return this.service.findByTitle(titleid)
