@@ -17,6 +17,22 @@ export class AuthService {
    * @returns 
    */
   async validateUser(name: string, pwd: string): Promise<any> {
+      // 判断当前用户名的 count 是否大于0 
+    // 先根据用户名检索在数据库中是否存在
+    const userBefore = await this.userService.findByNmae(name)
+    console.log('userBefore')
+    console.log(userBefore)
+    if (userBefore) {
+      if (userBefore.login_count > 5) {
+        return null
+      }
+       // 登录记入次数
+       await this.userService.update(userBefore.id, {
+        loginCount: userBefore.login_count + 1
+      }) 
+    } else {
+      return null
+    }
     const user = await this.userService.findOne(name, pwd);
     console.log('这是返回的user')
     console.log(user)

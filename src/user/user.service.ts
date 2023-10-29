@@ -57,4 +57,16 @@ export class UserService {
     }
     ;
   }
+
+  async findByNmae(name: string) {
+    let res = await this.repository.query(
+      `select * from login_user where login_name = '${name}'`
+    )
+    if (res && res.length > 0) {
+      return res[0]
+    } else{
+      return null
+    }
+    ;
+  }
 }
