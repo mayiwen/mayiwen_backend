@@ -6,12 +6,12 @@ import { HelloModule } from './module/nav/module/hello/hello.module';
 import { UserModule } from './user/user.module';
 import { AuthModule } from './auth/auth.module';
 import { NavModule } from './module/nav/nav.module';
-import { username, password, database } from './mayiwen'
+import { localhost, username, password, database } from './mayiwen'
 @Module({
   imports: [HelloModule, UserModule,AuthModule,NavModule,
     TypeOrmModule.forRoot({
     type: 'postgres',
-    host: 'localhost',
+    host: localhost,
     port: 5432,
     username,
     password,
