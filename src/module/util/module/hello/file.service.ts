@@ -1,6 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import * as fs from 'fs';
 import * as path from 'path';
+import { lastValueFrom } from 'rxjs';
 @Injectable()
 export class FileService {
   getHello(): string {
@@ -16,7 +17,26 @@ export class FileService {
    */
   listByPath(pathString: string): string[] {
     const ls = fs.readdirSync(path.normalize(pathString))
-    return ls
+    let ret = []
+    ls.forEach(item => {
+      console.log(item)
+      let fileSingle = fs.statSync(path.join(pathString, item))
+      console.log()
+      console.log(fileSingle.isDirectory())
+      if (fileSingle.isFile()) {
+        ret.push({
+          path: item,
+          type: 'file'
+        })
+      }
+      if (fileSingle.isDirectory()) {
+        ret.push({
+          path: item,
+          type: 'dir'
+        })
+      }
+    })
+    return ret
   }
   delete(pathString: string): string {
     console.log('111')
