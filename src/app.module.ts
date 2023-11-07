@@ -6,7 +6,7 @@ import { HelloModule } from './module/nav/module/hello/hello.module';
 import { UserModule } from './user/user.module';
 import { AuthModule } from './auth/auth.module';
 import { NavModule } from './module/nav/nav.module';
-import { localhost, username, password, database } from './mayiwen'
+import { localhost, username, password, database } from '../mayiwen'
 import { UpdateModule } from './module/update/update.module';
 import { UtilModule } from './module/util/util.module';
 
