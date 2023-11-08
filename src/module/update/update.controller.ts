@@ -11,7 +11,6 @@ export class UpdateController {
   // getUpload(): string {
   //   return this.updateService.getHello();
   // }
-  @Public()
   @Post('/upload')
   @UseInterceptors(FileInterceptor('file'))
   /**

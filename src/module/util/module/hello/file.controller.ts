@@ -10,12 +10,10 @@ export class FileController {
   getHello(): string {
     return this.fileService.getHello();
   }
-  @Public()
   @Post('/list')
   list(@Body() req: any) {
     return this.fileService.listByPath(req.path);
   }
-  @Public()
   @Post('/delete')
   delete(@Body() req: any) {
     return this.fileService.delete(req.path);
