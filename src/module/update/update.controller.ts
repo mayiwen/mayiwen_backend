@@ -24,8 +24,10 @@ export class UpdateController {
       console.log('上传文件的类型是对的')
       // 首先将获取倒文件传到
       console.log('这是打印的fs')
+      console.log(decodeURIComponent(escape(file.originalname)))
+      console.log(111)
 
-      fs.writeFile(req.path + file.originalname, file.buffer, err => {
+      fs.writeFile(req.path + decodeURIComponent(escape(file.originalname)), file.buffer, err => {
         if (err) {
           console.error(err);
         }

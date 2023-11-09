@@ -16,6 +16,10 @@ export class FileService {
    * @returns 列出父级路径下所有的文件和文件夹
    */
   listByPath(pathString: string): string[] {
+    console.log('pathString')
+    console.log(pathString)
+    pathString =  decodeURIComponent(escape(pathString))
+    console.log(pathString)
     const ls = fs.readdirSync(path.normalize(pathString))
     let ret = []
     ls.forEach(item => {
