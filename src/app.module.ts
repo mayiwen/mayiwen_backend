@@ -9,9 +9,10 @@ import { NavModule } from './module/nav/nav.module';
 import { localhost, username, password, database } from './mayiwen'
 import { UpdateModule } from './module/update/update.module';
 import { UtilModule } from './module/util/util.module';
+import { moduleArr } from './module';
 
 @Module({
-  imports: [HelloModule, UserModule,AuthModule,NavModule, UpdateModule, UtilModule,
+  imports: [HelloModule, UserModule,AuthModule,NavModule, UpdateModule, UtilModule, ...moduleArr,
     TypeOrmModule.forRoot({
     type: 'postgres',
     host: localhost,
